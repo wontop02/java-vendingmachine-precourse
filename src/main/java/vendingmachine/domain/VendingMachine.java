@@ -48,4 +48,24 @@ public class VendingMachine {
     public int getCoinCount(Coin coin) {
         return coins.getOrDefault(coin, 0);
     }
+
+    public Map<Coin, Integer> calculateChange(int amount) {
+        Map<Coin, Integer> result = new HashMap<>();
+        for (Coin coin : Coin.values()) {
+            if (amount < Coin.COIN_10.getAmount()) {
+                return result;
+            }
+            if (getCoinCount(coin) <= 0) {
+                continue;
+            }
+            if ((coin.getAmount() * coins.get(coin)) <= amount) {
+                result.put(coin, coins.get(coin));
+                amount -= coin.getAmount() * coins.get(coin);
+                continue;
+            }
+            result.put(coin, (amount / coin.getAmount()));
+            amount %= coin.getAmount();
+        }
+        return result;
+    }
 }

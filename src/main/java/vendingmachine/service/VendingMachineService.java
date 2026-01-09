@@ -46,4 +46,11 @@ public class VendingMachineService {
         product.minusQuantity();
         inputAmount.minusAmount(product.getPrice());
     }
+
+    public boolean isEnd(InputAmount inputAmount) {
+        if (ProductRepository.allSoldOut()) {
+            return true;
+        }
+        return ProductRepository.minPrice() > inputAmount.getAmount();
+    }
 }

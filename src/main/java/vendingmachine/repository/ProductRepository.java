@@ -20,8 +20,20 @@ public class ProductRepository {
 
     public static Product findByName(String name) {
         return products.stream()
-                .filter(l -> l.getName().equals(name))
+                .filter(p -> p.getName().equals(name))
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException(NOT_FOUND_PRODUCT));
+    }
+
+    public static boolean allSoldOut() {
+        return products.stream()
+                .allMatch(p -> p.getQuantity() < 0);
+    }
+
+    public static int minPrice() {
+        return products.stream()
+                .mapToInt(Product::getPrice)
+                .min()
+                .orElse(0);
     }
 }
