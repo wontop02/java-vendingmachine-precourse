@@ -138,9 +138,8 @@ public enum Coin {
     - `camp.nextstep.edu.missionutils.Console`의 `readLine()` 활용
 - 입력값 검증: 잘못된 값일 경우 `IllegalArgumentException` 발생 및 재입력 요청
     - 빈 문자열을 입력한 경우 예외 발생
-    - 형식이 맞지 않는 경우 예외 발생
-    - 상품 가격이 100원 미만일 경우 예외 발생
-    - 상품 가격이 10원으로 나누어 떨어지지 않는 경우 예외 발생
+    - 숫자를 제외한 문자를 입력한 경우 예외 발생
+    - 숫자가 int 범위를 초과한 경우 예외 발생
 
 ### 자판기 동전 생성
 
