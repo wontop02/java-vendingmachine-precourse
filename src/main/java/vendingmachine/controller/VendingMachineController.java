@@ -1,5 +1,7 @@
 package vendingmachine.controller;
 
+import vendingmachine.domain.Coin;
+import vendingmachine.domain.VendingMachine;
 import vendingmachine.service.VendingMachineService;
 import vendingmachine.util.InputValidator;
 import vendingmachine.view.InputView;
@@ -18,18 +20,26 @@ public class VendingMachineController {
     }
 
     public void run() {
-        int amount = readAmount();
+        VendingMachine vendingMachine = makeVendingMachine();
+        printCoin(vendingMachine);
     }
 
-    public int readAmount() {
+    public VendingMachine makeVendingMachine() {
         while (true) {
             try {
                 String input = inputView.readAmount();
                 InputValidator.validateAmount(input);
-                return Integer.parseInt(input);
+                return vendingMachineService.makeVendingMachine(input);
             } catch (IllegalArgumentException e) {
                 outputView.printErrorMessage(e.getMessage());
             }
+        }
+    }
+
+    public void printCoin(VendingMachine vendingMachine) {
+        outputView.printCoinStart();
+        for (Coin coin : Coin.values()) {
+            outputView.printCoin(coin.getAmount(), vendingMachine.getCoinCount(coin));
         }
     }
 }
