@@ -5,7 +5,7 @@ public class OutputView {
     private static final String PRINT_COIN_START = "자판기가 보유한 동전";
     private static final String PRINT_COIN = "%d원 - %d개";
     private static final String PRINT_INPUT_AMOUNT = "투입 금액: %d원";
-    private static final String PRINT_CHANGE_START = "자판기가 보유한 동전";
+    private static final String PRINT_CHANGE_START = "잔돈";
 
     public void printErrorMessage(String message) {
         System.out.println(ERROR_PREFIX + message);
@@ -13,6 +13,7 @@ public class OutputView {
     }
 
     public void printCoinStart() {
+        System.out.println();
         System.out.println(PRINT_COIN_START);
     }
 
@@ -22,6 +23,7 @@ public class OutputView {
     }
 
     public void printInputAmount(int amount) {
+        System.out.println();
         System.out.printf(PRINT_INPUT_AMOUNT, amount);
         System.out.println();
     }
