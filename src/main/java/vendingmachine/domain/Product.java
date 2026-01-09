@@ -44,4 +44,16 @@ public class Product {
             throw new IllegalArgumentException(INVALID_QUANTITY);
         }
     }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void minusQuantity() {
+        quantity--;
+    }
 }
