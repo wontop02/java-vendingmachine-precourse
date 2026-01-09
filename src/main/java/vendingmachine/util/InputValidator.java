@@ -78,4 +78,10 @@ public class InputValidator {
             throw new IllegalArgumentException(DUPLICATED_PRODUCT_NAME);
         }
     }
+
+    public static void validateInputAmount(String input) {
+        validateNotBlank(input);
+        validateOnlyDigit(input);
+        validateWithinIntRange(input);
+    }
 }

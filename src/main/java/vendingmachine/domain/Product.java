@@ -1,10 +1,11 @@
 package vendingmachine.domain;
 
-import static vendingmachine.constant.VendingMachineConstant.MIN_PRODUCT_PRICE;
-import static vendingmachine.constant.VendingMachineConstant.MIN_PRODUCT_QUANTITY;
 import static vendingmachine.domain.VendingMachine.MIN_AMOUNT;
 
 public class Product {
+    public static final int MIN_PRODUCT_PRICE = 100;
+    public static final int MIN_PRODUCT_QUANTITY = 1;
+
     private static final String INVALID_AMOUNT_REMAINDER = MIN_AMOUNT + "원으로 나누어 떨어져야 합니다.";
     private static final String INVALID_RANGE = String.format("상품 금액은 %d원 이상이어야 합니다.", MIN_PRODUCT_PRICE);
     private static final String INVALID_QUANTITY = String.format("상품 수량은 %d개 이상이어야 합니다.", MIN_PRODUCT_QUANTITY);

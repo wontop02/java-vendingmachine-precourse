@@ -23,6 +23,8 @@ public class VendingMachineController {
         VendingMachine vendingMachine = makeVendingMachine();
         printCoin(vendingMachine);
         addProduct();
+        int inputAmount = readInputAmount();
+        outputView.printInputAmount(inputAmount);
     }
 
     public VendingMachine makeVendingMachine() {
@@ -51,6 +53,18 @@ public class VendingMachineController {
                 InputValidator.validateProducts(input);
                 vendingMachineService.addProducts(input);
                 return;
+            } catch (IllegalArgumentException e) {
+                outputView.printErrorMessage(e.getMessage());
+            }
+        }
+    }
+
+    public int readInputAmount() {
+        while (true) {
+            try {
+                String input = inputView.readInputAmount();
+                InputValidator.validateInputAmount(input);
+                return Integer.parseInt(input);
             } catch (IllegalArgumentException e) {
                 outputView.printErrorMessage(e.getMessage());
             }
